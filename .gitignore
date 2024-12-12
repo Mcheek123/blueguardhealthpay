@@ -1,6 +1,4 @@
-__pycache__/
-*.pyc
-.DS_Store
-creditcard.csv
 venv/
-
+.DS_Store
+*.log
+*.env
