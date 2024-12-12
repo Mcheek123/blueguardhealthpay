@@ -1,17 +1,15 @@
 {
-{
   "version": 2,
   "builds": [
     {
-      "src": "HAP 318 BlueGuard HealthPay Python Back End.py",
-      "use": "@vercel/python"
+      "src": "templates/home.html",
+      "use": "@vercel/static"
     }
   ],
-  "env": {
-    "FLASK_APP": "HAP 318 BlueGuard HealthPay Python Back End.py",
-    "FLASK_ENV": "development"
-  },
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/" }
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/templates/home.html"
+    }
   ]
 }
