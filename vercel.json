@@ -2,16 +2,14 @@
   "version": 2,
   "builds": [
     {
-      "src": "templates/home.html",
-      "use": "@vercel/static"
+      "src": "blueguardhealthpayapp.py",
+      "use": "@vercel/python"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/templates/home.html"
+      "dest": "/blueguardhealthpayapp.py"
     }
   ]
-}
-
 }
