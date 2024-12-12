@@ -1,0 +1,7 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/blueguard-healthpay/blueguard-healthpay:latest', '.']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/blueguard-healthpay/blueguard-healthpay:latest']
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args: ['run', 'deploy', 'blueguard-healthpay', '--image', 'gcr.io/blueguard-healthpay/blueguard-healthpay:latest', '--region', 'us-east4', '--platform', 'managed', '--allow-unauthenticated', '--log-http']

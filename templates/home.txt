@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BlueGuard HealthPay</title>
+    <link rel="stylesheet" href="static/blueguard_styles.css">
+    <script>
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(section => section style.display = 'none');
+            document.getElementById(sectionId).style.display = 'block';
+        }
+
+        function submitPatientId() {
+            showSection('payment-portal');
+        }
+
+        function submitPayment() {
+            const amount = document.getElementById('co-pay-amount').value;
+            if (!amount) {
+                alert('Please enter a co-pay amount.');
+                return;
+            }
+
+            const isFraud = Math.random() < 0.1; // Simulate 10% fraud detection rate
+            if (isFraud) {
+                showSection('cancel');
+            } else {
+                showSection('success');
+                document.getElementById('transaction-id').textContent = Math.random().toString(36).substring(2, 15); // Generate a random transaction ID
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <!-- Home Section -->
+        <div id="home" class="section">
+            <h1>Welcome to BlueGuard HealthPay</h1>
+            <p>Patient ID: <input type="text" id="patient-id" placeholder="Enter Patient ID" value="{{ fake_user['patient_id'] }}" readonly></p>
+            <button onclick="submitPatientId()">Proceed to Payment</button>
+        </div>
+
+        <!-- Payment Portal Section -->
+        <div id="payment-portal" class="section" style="display:none;">
+            <h1>Payment Portal</h1>
+            <input type="text" id="co-pay-amount" placeholder="Enter Co-pay Amount">
+            <button onclick="submitPayment()">Pay</button>
+        </div>
+
+        <!-- Success Section -->
+        <div id="success" class="section" style="display:none;">
+            <h1>Payment Successful</h1>
+            <p>Thank you for your payment.</p>
+            <p>Transaction ID: <span id="transaction-id"></span></p>
+            <button onclick="showSection('home')">Return Home</button>
+        </div>
+
+        <!-- Cancel Section -->
+        <div id="cancel" class="section" style="display:none;">
+            <h1>Payment Cancelled</h1>
+            <p>Your payment was cancelled.</p>
+            <button onclick="showSection('home')">Return Home</button>
+        </div>
+    </div>
+</body>
+</html>

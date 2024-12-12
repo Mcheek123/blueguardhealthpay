@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='blueguard_styles.css') }}">
+    <title>BlueGuard HealthPay - Home</title>
+</head>
+<body>
+    <div class="container">
+        <img src="{{ url_for('static', filename='blueguard_logo.png') }}" alt="BlueGuard HealthPay Logo" style="height: 60px; margin-bottom: 20px;">
+        <h1>Welcome to BlueGuard HealthPay</h1>
+        <form action="/submit-patient-id" method="post">
+            <p><strong>Patient ID:</strong> <span id="patientIDText">{{ patient_id }}</span></p>
+            <input type="hidden" id="patientID" name="patientID" value="{{ patient_id }}">
+            <button type="submit">Proceed to Payment</button>
+        </form>
+        <div class="buy-me-a-coffee">
+            <a href="https://www.buymeacoffee.com/mitchellcheek" target="_blank">
+                <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px; width: 217px;">
+            </a>
+        </div>
+    </div>
+</body>
+</html>
