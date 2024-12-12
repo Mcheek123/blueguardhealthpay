@@ -1,3 +1,0 @@
-creditcard.csv[[:space:]]folder/creditcard.csv/sampled_creditcard.csv filter=lfs diff=lfs merge=lfs -text
-*.zip filter=lfs diff=lfs merge=lfs -text
-creditcard.csv filter=lfs diff=lfs merge=lfs -text
